@@ -17,7 +17,7 @@ def login_visitor(request):
                 'Staff has been Notified',
                 'Staff will come to see you soon',
                 'balaydalakay@gmail.com',
-                [staff_email, 'christopheranchetaece@gmail.com'],
+                [staff_email],
                 fail_silently=False
             )
             return redirect('welcome')
