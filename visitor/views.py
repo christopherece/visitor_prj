@@ -21,7 +21,7 @@ def login_visitor(request):
                 [staff_email],
                 fail_silently=False
             )
-            return redirect('welcome')
+            return render(request, 'visitor/welcome.html', {'name': name})
     else:
         form = VisitorLoginForm()
     return render(request, 'visitor/login.html', {'form': form})
