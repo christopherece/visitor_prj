@@ -7,8 +7,12 @@ from datetime import date
 class VisitorLoginForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     # email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    person_to_visit = forms.ModelChoiceField(queryset=PersonToVisit.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
-
+    # person_to_visit = forms.ModelChoiceField(queryset=PersonToVisit.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    person_to_visit = forms.ModelChoiceField(
+            queryset=PersonToVisit.objects.all(),
+            widget=forms.Select(attrs={'class': 'form-control'}),
+            empty_label="Select a Staff to visit"  # This adds a default option
+        )
     # Updated submit method to handle form submission and save data
     def submit(self):
         if self.is_valid():
