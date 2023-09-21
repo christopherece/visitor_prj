@@ -3,9 +3,36 @@ from django.shortcuts import render, redirect
 from .forms import VisitorLoginForm
 from .models import Visitor
 from django.core.mail import send_mail
+from datetime import datetime
+from django.shortcuts import render, get_object_or_404, redirect
+
 
 def dashboard(request):
     return render(request, 'visitor/dashboard.html')
+
+def logout(request, id):
+    obj = get_object_or_404(Visitor, id=id)  # Use get_object_or_404 to handle not found cases
+    
+    if request.method == 'POST':
+        
+        
+        obj.is_signin = False
+        obj.save()
+        
+        return redirect('dashboard')
+    
+    # Handle the case when the request method is not POST (optional)
+
+    return redirect('dashboard')
+    
+
+def signout_visitor(request):
+    visitors = Visitor.objects.filter(is_signin=True).order_by('-login_date')
+    context = {
+        'visitors':visitors,
+        'login_date':'login_date'
+    }
+    return render(request, 'visitor/signout.html', context)
 
 def login_visitor(request):
     if request.method == 'POST':
