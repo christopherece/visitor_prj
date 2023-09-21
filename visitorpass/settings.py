@@ -76,23 +76,23 @@ WSGI_APPLICATION = 'visitorpass.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'visitor_tbl',
-#         'USER': 'postgres',
-#         'PASSWORD': '!pass1234',
-#         'HOST':'192.168.10.225',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'visitor_tbl',
+        'USER': 'postgres',
+        'PASSWORD': '!pass1234',
+        'HOST':'192.168.10.225',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -156,8 +156,8 @@ MESSAGE_TAGS = {
 #Email Config
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'christopheranchetaece@gmail.com'
-EMAIL_HOST_PASSWORD = 'peclwufdntkkoqvh'
+EMAIL_HOST_USER = 'balaydalakay@gmail.com'
+EMAIL_HOST_PASSWORD = 'Nokia5130-c'
 EMAIL_USE_TLS = True
 
 try:
