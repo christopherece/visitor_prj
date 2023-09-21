@@ -17,6 +17,7 @@ def logout(request, id):
         
         
         obj.is_signin = False
+        obj.signout_date = datetime.now()
         obj.save()
         
         return redirect('dashboard')
