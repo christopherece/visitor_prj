@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'visitor_tbl',
         'USER': 'postgres',
         'PASSWORD': '!pass1234',
-        'HOST':'192.168.10.255',
+        'HOST':'192.168.10.225',
         'PORT': '5432',
     }
 }
