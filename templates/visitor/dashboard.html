@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ekePanuku Guest Sign In</title>
+    
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Center the logo and title */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Style the buttons */
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Make buttons larger */
+        .btn-lg-custom {
+            padding: 20px 40px; /* Adjust the padding to make the buttons larger */
+            font-size: 1.5rem; /* Adjust the font size */
+        }
+    </style>
+</head>
+<body>
+    <!-- Centered content -->
+    <div class="center-content">
+        <!-- Logo -->
+        <img src="{% static 'img/logo1.png' %}" alt="Your Logo" width="auto" height="175px">
+        
+        <!-- Title -->
+        <h1>EkePanuku Guest Sign In</h1>
+        
+        <!-- Buttons -->
+        <div class="btn-container">
+            <a href="{% url 'login_visitor' %}" class="btn btn-primary btn-lg-custom">Sign In</a>
+            <a href="{% url 'welcome' %}" class="btn btn-secondary btn-lg-custom">Sign Out</a>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

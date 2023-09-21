@@ -4,6 +4,9 @@ from .forms import VisitorLoginForm
 from .models import Visitor
 from django.core.mail import send_mail
 
+def dashboard(request):
+    return render(request, 'visitor/dashboard.html')
+
 def login_visitor(request):
     if request.method == 'POST':
         form = VisitorLoginForm(request.POST)
@@ -18,7 +21,7 @@ def login_visitor(request):
                 'You Have a Visitor',
                 name + ' is waiting for you at the Reception.',
                 'balaydalakay@gmail.com',
-                [staff_email],
+                [staff_email, 'christopheranchetaece@gmail.com'],
                 fail_silently=False
             )
             return render(request, 'visitor/welcome.html', {'name': name})
