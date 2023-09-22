@@ -1,124 +1,57 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html>
-<head>
-  <title>ekePanuku Guest LogIn</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/clock.css' %}">
 
 
-  <style>
-    /* Apply styles to the body and HTML to ensure full height */
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
+{% block content %}
 
-    /* Style the wrapper and main content */
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    /* Style the footer */
-    footer.footer {
-        position: fixed;
-        bottom: 0;
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        width: 100%;
-    }
-
-    /* Ensure that the content area grows to fill the available space */
-    .content {
-        flex-grow: 1;
-    }
-  </style>
-</head>
-<body>
-    <div class="wrapper">
-    <!-- Top Bar -->
-    {% include 'partials/_topbar.html' %}
-    <!-- Navbar -->
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="card">
-                    
-                    <div class="date">
-                        <span id="dateDisplay"></span>
-                    </div>
-                    <div class="clock">
-                        <span id="clockDisplay"></span>
-                    </div>
-                    <hr>
-                    <div class="my-3"></div>
-                    <h4>For assistance, please call:
-                        <span>093-55-55-55</span>
-                    </h4>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="card">
+                
+                <div class="date">
+                    <span id="dateDisplay"></span>
                 </div>
-                <div class="col-md-6 text-center">
-                    <img src="{% static 'img/logo1.png' %}" style="width: 350px; height: auto; display: block; margin: 0 auto;" alt="">
-                    <h1 class="text-center mb-4">Welcome, Visitor!</h1>
-                    <form method="post" >
-                        {% csrf_token %}
-                        <div class="form-group">
-                            {{ form.name.label_tag }}
-                            {{ form.name }}
+                <div class="clock">
+                    <span id="clockDisplay"></span>
+                </div>
+                <hr>
+                <div class="my-3"></div>
+                <h4>For assistance, please call:
+                    <span>093-55-55-55</span>
+                </h4>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'img/logo1.png' %}" style="width: 350px; height: auto; display: block; margin: 0 auto;" alt="">
+                <h1 class="text-center mb-4">Welcome, Visitor!</h1>
+                <form method="post" >
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.person_to_visit.label_tag }}
+                        {{ form.person_to_visit }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+                            <a href="{% url 'dashboard' %}" class="btn btn-danger form-control">Go Back</a>
                         </div>
-                        <div class="form-group">
-                            {{ form.person_to_visit.label_tag }}
-                            {{ form.person_to_visit }}
-                        </div>
-                        <div class="text-center">
+                        <div class="col-md-8">
                             <button type="submit" class="btn btn-primary form-control">Log In</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    {% include 'partials/_footer.html' %}
-
-    <!-- Include Bootstrap JS and jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <script>
-            // clock.js
-            function updateClock() {
-                const clockDisplay = document.getElementById('clockDisplay');
-                const dateDisplay = document.getElementById('dateDisplay');
-                const now = new Date();
-                const hours = now.getHours().toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const seconds = now.getSeconds().toString().padStart(2, '0');
-                const date = now.toDateString();
-                
-                clockDisplay.textContent = `${hours}:${minutes}:${seconds}`;
-                dateDisplay.textContent = date;
-            }
-
-            // Update the clock every second
-            setInterval(updateClock, 1000);
-
-            // Initial call to display the clock immediately
-            updateClock();
-
-        </script>
-
-        <script>
-            setTimeout(function() {
-                window.location.href = 'https://visitor.balaydalakay.com/';
-                // window.location.href = 'http://localhost:8000/';
-
-            }, 60000); // 3000 milliseconds = 3 seconds
-        </script>
-        
     </div>
-</body>
-</html>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = 'https://visitor.balaydalakay.com/';
+            // window.location.href = 'http://localhost:8000/';
+
+        }, 60000); // 3000 milliseconds = 3 seconds
+    </script>
+
+{% endblock %}

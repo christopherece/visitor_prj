@@ -5,6 +5,7 @@ from .models import Visitor
 from django.core.mail import send_mail
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 
 
 def dashboard(request):
@@ -15,15 +16,13 @@ def logout(request, id):
     
     if request.method == 'POST':
         
-        
         obj.is_signin = False
         obj.signout_date = datetime.now()
         obj.save()
-        
+            
+        messages.success(request, "You have successfully logged out.")
         return redirect('dashboard')
     
-    # Handle the case when the request method is not POST (optional)
-
     return redirect('dashboard')
     
 
