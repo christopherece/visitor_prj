@@ -24,10 +24,10 @@ class VisitorLoginForm(forms.Form):
             today = date.today()
             existing_visitor = Visitor.objects.filter(name=name, created_at__date=today).first()
 
-            if existing_visitor:
-                # If a visitor with the same email exists for today, you can handle this case as needed.
-                # For example, return a message or prevent the submission.
-                return None
+            # if existing_visitor:
+            #     # If a visitor with the same email exists for today, you can handle this case as needed.
+            #     # For example, return a message or prevent the submission.
+            #     return None
             
             # Create a new Visitor instance and save it to the database
             visitor, created = Visitor.objects.get_or_create(name=name, person_to_visit=person_to_visit)
